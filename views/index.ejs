@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css" />
+    <title>BlogPage</title>
+  </head>
+
+  <body>
+    <!-- INSERT HEADER -->
+    <%- include("partials/header.ejs") %>
+
+    <!-- CREATING POSTS FORM -->
+    <div id="createPost">
+      <button id="createButton">Create Post</button>
+    </div>
+    <div id="post" class="hidden">
+      <form action="/submit" method="POST" id="blogForm" enctype="multipart/form-data">
+        <div id="test">
+          <h2>Write Your Post</h2>
+          <div>            
+            <button type="button" style="display:block;width:120px; height:30px; position: relative; left:30%"  onclick="document.getElementById('getFile').click()">Select Image</button>
+            <input type='file' id="getFile" style="display:none" onchange="handleImageUpload(event)" >
+          </div>
+          <div id="image-preview"></div>
+          <div>
+            <label for="Subject" class="center">Subject</label> <br />
+            <input type="text" name="subject" id="subject" required /> <br/>
+          </div>
+          <div>
+            <label for="content" class="center">Content</label> <br />
+            <textarea name="content" rows="5" id="content" required></textarea>
+            <div class="buttons">
+              <button type="Submit" id="submitButton" onclick="submitForm()">Submit</button>
+              <button type="reset" id="cancelButton">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div id="blogPosts"></div>
+    
+
+    <!-- INSERT FOOTER -->
+    <%- include("partials/footer.ejs") %>
+
+    <!-- SECTION FOR JAVASCRIPT -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <script>
+      // HIDE AND SHOW POST CREATION FORM
+      $("#createButton").click(function () {
+          $("#post").removeClass("hidden");
+      });
+  
+      $("#cancelButton ").click(function () {
+          $("#post").addClass("hidden");
+      });    
+
+      function submitForm(){
+        var content = document.getElementById("content").value;
+        var subject = document.getElementById("subject").value;
+        if(content == "" || subject == ""){
+        alert("Please fill the form")
+      }else{
+          $("#post").addClass("hidden");
+        }
+      }
+  
+  
+      function handleImageUpload(event) {   
+          var reader = new FileReader();
+          var file = event.target.files[0]; 
+          reader.onload = function (e) {
+              var imageDataURL = e.target.result;
+              console.log('Image data URL:', imageDataURL); 
+              $("#image-preview").html('<img src="' + imageDataURL + '" />');
+              
+              // SEND IMG TO SERVER
+              $.ajax({
+                  type: 'POST',
+                  url: '/submit', 
+                  data: { image: imageDataURL },
+                  success: function(response) {
+                      console.log('Image uploaded successfully:', response);
+                      // If you want to do something with the response, handle it here
+                  },
+                  error: function(error) {
+                      console.error('Error uploading image:', error);
+                  }
+              });   
+          };
+  
+          reader.onerror = function (error) {
+              console.error('File reading error:', error);
+          };
+  
+          reader.readAsDataURL(file);
+      } 
+  
+      // HANDLE FORM SUBMISSION
+      $(document).ready(function() {
+          $('#blogForm').submit(function(event) {
+              event.preventDefault(); 
+              var formData = $(this).serialize();
+  
+              $.ajax({
+                  type: 'POST',
+                  url: '/submit',
+                  data: formData,
+                  success: function(response) {
+                      $('#blogPosts').append(response); 
+                  },
+                  error: function(err) {
+                      console.error('Error submitting post:', err);
+                  }
+              });            
+          });
+      });  
+     
+  </script>
+  
+  </body>
+</html>
