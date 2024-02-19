@@ -1,0 +1,28 @@
+.container-fluid{
+    background-color: rgb(182, 179, 179);
+    font-weight: bold;    
+}
+
+.navbar-nav .nav-link {
+   display: flex;
+   justify-content: end;
+  }
+ 
+ 
+ .twoColors{ 
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom right, rgb(107, 111, 218) 50%, rgb(47, 47, 142) 50%);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: white;
+ }
+
+  
+  
+  
+  
+
+
+

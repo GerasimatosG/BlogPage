@@ -1,56 +1,70 @@
 import express from "express";
-import bodyParser from "body-parser";
+import dotenv from 'dotenv';
+import expressLayout from 'express-ejs-layouts';
+import  methodOverride from "method-override";
+import mainRouter from './server/routes/main.js';
+import adminRouter from './server/routes/admin.js';
+import connectDB from './server/config/db.js';
+import cookieParser from "cookie-parser"; 
+import MongoStore from "connect-mongo"; 
+import session from "express-session";
+
+dotenv.config();
+
 
 
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.urlencoded({extended:true}));
+//Connect to Database
+connectDB();
+
+//Using MiddleWares
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 app.use(express.static("public"));
+app.use(cookieParser()); 
+app.use(methodOverride('_method'));
 
-app.get("/",(req,res)=>{
-    res.render("index.ejs",);
-});
+app.use(session({
+    secret : 'keyboard cat',
+    resave : false,
+    saveUninitialized : true,
+    store: MongoStore.create({
+        mongoUrl : process.env.MONGODB_URI
+    })
+}))
 
-app.get("/about",(req,res)=>{
-    res.render("about.ejs");
-});
+//Templating Engine
+app.use(expressLayout);
+app.set('layout', './layouts/main');
+app.set('view engine','ejs');
 
-app.get("/contact",(req,res)=>{
-    res.render("contact.ejs");
-});
-
-
-
-// HANDLE CONTACT FORM
-app.post("/submitForm", (req, res) => {
-    res.render("contact.ejs", { submitted: true });
-});
-
-// HANDLE POST CREATION
-app.post("/submit", (req, res) => {
-    
-    const { subject , content , imageDataURL } = req.body;
-
-    // Construct the HTML for the new blog post
-    const newPostHTML = `
-        <div class="card" style="width: 18rem;">
-             <img src="${imageDataURL}" class="card-img-top" alt="icon">
-            <div class="card-body">
-                <h5 class="card-title">${subject}</h5> 
-                <div class = "blogContent">
-                    <p>${content}</p>
-                </div>
-                <a href="#" class="btn btn-primary">Read Blog</a>
-            </div>
-        </div>`;
-
-    // Send the HTML response back to the client
-    res.send(newPostHTML);
-});
+// GET admin and main Routers
+app.use('/', mainRouter);
+app.use('/', adminRouter);
 
 
 // CREATE SERVER
 app.listen(port,()=>{
     console.log(`Server running on port : ${port}`);
 })
+
+
+
+// ONLY ADD IF I WANT TO MAKE REGISTER IN MY SITE
+
+// import cookieParser from "cookie-parser"; 
+// import MongoStore from "connect-mongo"; 
+// import session from "express-session";
+
+// app.use(cookieParser()); 
+
+// app.use(session({
+//     secret : 'keyboard cat',
+//     resave : false,
+//     saveUninitialized : true,
+//     store: MongoStore.create({
+//         mongoUrl : process.env.MONGODB_URI
+//     })
+// }))

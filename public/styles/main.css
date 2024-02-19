@@ -1,0 +1,263 @@
+/* GENERAL CSS FOR HTML ELEMENTS */
+
+html {
+  height: 100%;
+}
+
+html > body{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: var(--black);
+  font-size: var(--font-size-base);
+  background-color: #f9e0f4;   
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container{    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  flex: 1;
+  padding-bottom: 180px; 
+}
+
+.footer {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+}
+
+:root{
+  --black: #1c1c1c;
+  --gray: #7E7E7E;
+  --gray-light: #E4E4E4;
+  --red: #b30000;
+  --font-size-base: 1.4rem;
+  --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+  --font-size-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+  --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+  --border-radius: 10px;
+}
+
+
+
+input[type="text"],
+input[type="username"],
+input[type="password"],
+input[type="search"],
+select,
+textarea{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: var(--font-size-base);
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  margin-bottom: 1rem;
+}
+  
+/* CSS FOR BUTTONS AND SEARCH-BAR(excluding admin) */
+.searchButtonDiv{
+    display: flex;
+    justify-content: center;   
+}
+
+
+.searchButtonDiv > .searchButton{
+   
+    border-radius: 10%;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+}
+
+.searchBar{
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+#searchInput{
+    width: 400px;
+}
+
+#searchClose{
+  background-color: red;
+  color: black;
+  font-weight: 600;  
+}
+
+#emptySearch{
+  margin-top: 25px;
+  color: red;
+  text-decoration: underline;
+}
+
+
+/* CSS FOR ADMIN PAGE */
+
+ul > .adminBlogs > a{
+  text-decoration: none;
+}
+
+.adminButtonCreate{
+  background-color: green;
+  color: white;
+}
+
+.adminButtonDelete{
+  background-color: #b30000;
+  color: rgb(220, 210, 210);
+}
+
+.logoutButton{
+  display: flex;
+  justify-content:last baseline; 
+}
+
+.adminBlogControl{
+ display: flex;
+ gap: 10px;
+}
+
+.adminBlogs{
+  display: flex;
+  justify-content: center;   
+  }
+
+.adminBlogs > a{
+  width: 500px;
+  margin-bottom: 10px;
+}
+
+.loginForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adminTitle{
+ margin-bottom: 20px;
+ display: flex;
+ gap: 150px;
+}
+
+.adminTitle > a{
+  position: relative;
+  left: 50px;
+}
+ 
+/* STYLE FOR BLOG DISPLAYING  */
+
+.blogs>.blogList>li>a{
+  text-decoration: none;
+}
+
+.articles > .blogList > li > a{
+  text-decoration: none;
+}
+
+.blogs{    
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.blogs > .blogHeading{
+  text-decoration: underline;    
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+
+.blogList li:hover {
+  filter: none;
+}
+
+.blogList:hover li {
+  filter: blur(2px);
+}
+
+.blogList:hover li:hover {
+  filter: none;
+}
+
+.pagination {
+  font-size: 1.3rem;
+  color: var(--gray);
+  text-decoration: none;
+    
+  display: inline-block; 
+  position: relative;   
+}
+
+.pagination:hover {
+  color: var(--black);
+}
+
+.blogList {
+  list-style-type: none;  
+  font-size: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;    
+  font-size: x-large;
+ 
+}
+
+.blogListDate {   
+  margin-left: 120px;
+  font-size: 1rem;
+  color: var(--gray);
+  width: 200px;       
+}
+
+#blogTitle{
+  display:inline-block;
+  width: 400px;
+}
+
+/* STYLE FOR ABOUT AND CONTACT PAGE */
+
+.aboutImage {
+  position: relative; 
+ 
+}
+
+.aboutImage > img {
+  border-radius: 50%;
+  position: absolute; 
+  width: 200px;
+  bottom: 0;
+  right: 50%; 
+  transform: translateX(50%);   
+}
+
+.contactForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: underline;
+}
+
+.contactForm > button{
+  margin-top: 10px;
+  background-color: orange;
+  text-decoration: none;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= locals.title %></title>
+    <meta name="description" content="<%= locals.description%>">
+    <link  type="text/css" rel="stylesheet" href="/styles/main.css">    
+    <script type="text/javascript" defer src="/js/script.js"></script>
+</head>
+<body>
+    <!-- INSERT HEADER -->
+    <%- include("../partials/header.ejs") %>
+
+    <h1 style="text-decoration: underline;">Admin Panel</h1>
+
+    <div class="logoutButton">
+    <a href="/logout"><button>Logout</button></a>
+   
+    </div>
+
+    <div class="container">
+        <%- body %>
+    </div>
+
+
+    <!-- INSERT FOOTER -->
+    <div class="footer">
+        <%- include("../partials/footer.ejs") %>  
+    </div>  
+   
+</footer>
+
+</body>
+</html>

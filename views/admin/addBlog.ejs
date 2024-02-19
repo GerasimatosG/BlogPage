@@ -1,0 +1,16 @@
+<a href="/dashboard">&larr; Back</a>
+
+<div class="adminTitle">
+    <h2>Add New Blog</h2>
+</div>
+
+<form action="/addBlog" class="center" method="POST">
+
+    <label for="title"><b>Title</b></label>
+    <input type="text" placeholder="Blog Title" name="title">
+
+    <label for="body"><b>Content</b></label>
+    <textarea name="body" cols="50" rows="5"></textarea>
+
+    <button type="submit" class="adminButtonCreate">Add</button>
+</form>

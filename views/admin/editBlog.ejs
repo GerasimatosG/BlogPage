@@ -1,0 +1,20 @@
+<a href="/dashboard">&larr; Back</a>
+
+<div class="adminTitle">
+    <h2>View / Edit Blog</h2>
+
+    <form action="/deleteBlog/<%= data._id %>?_method=DELETE" method="POST">
+        <button type="submit" class="adminButtonDelete">Delete</button>
+    </form>
+</div>
+
+<form action="/editBlog/<%= data._id %>?_method=PUT" class="center" method="POST">
+
+    <label for="title"><b>Title</b></label>
+    <input type="text" placeholder="Blog Title" name="title" value="<%= data.title %>">
+
+    <label for="body"><b>Content</b></label>
+    <textarea name="body" cols="50" rows="5"><%= data.body %></textarea>
+
+    <button type="submit" class="adminButtonCreate">Update</button>
+</form>
