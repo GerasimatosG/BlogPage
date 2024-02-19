@@ -40,7 +40,6 @@ Simple BlogPage is a Node.js web application built using Express, EJS, and Mongo
 
 2. Open a web browser and navigate to `http://localhost:3000` to view the blog page.
 3. To access the admin panel, go to `http://localhost:3000/admin`.
-  
 
 ## Admin Panel
 
@@ -56,4 +55,26 @@ To log in as an admin, users need to sign up for an account through the applicat
 
 - Admin login credentials are securely encrypted using bcrypt.
 - Ensure that strong passwords are used to further enhance security.
+
+- ## Below are some ScreenShots of the Project
+
+         HomePage
+- ![BlogPage_home](https://github.com/GerasimatosG/BlogPage/assets/137752675/8393921f-c58d-474b-a499-446554e285e9)
+
+-       Search Results
+- ![BlogPage_search](https://github.com/GerasimatosG/BlogPage/assets/137752675/698db05e-5235-4514-bbac-45b4904730f1)
+
+-       Admin LogIn
+- ![BlogPage_adminLogin](https://github.com/GerasimatosG/BlogPage/assets/137752675/ea674b66-2fa8-48ef-9bb4-c031bdfd310c)
+
+-       Admin Dashboard
+- ![BlogPage_adminDashboard](https://github.com/GerasimatosG/BlogPage/assets/137752675/5bddad12-4b28-4bd3-942c-c46185282b62)
+
+-       Update Post Example
+- ![BlogPage_adminUpdateBlog](https://github.com/GerasimatosG/BlogPage/assets/137752675/58aa14af-14e5-41b1-a1dc-f70c84a09812)
+
+
+
+
+
 
