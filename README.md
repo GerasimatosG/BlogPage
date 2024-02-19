@@ -1,4 +1,3 @@
-```
 # Simple BlogPage
 
 Simple BlogPage is a Node.js web application built using Express, EJS, and MongoDB. It provides a platform for users to view, search, and paginate through blog posts. Additionally, it includes an admin panel for managing blog posts securely with encrypted login using bcrypt.
