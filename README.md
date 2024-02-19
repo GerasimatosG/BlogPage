@@ -40,9 +40,7 @@ Simple BlogPage is a Node.js web application built using Express, EJS, and Mongo
 
 2. Open a web browser and navigate to `http://localhost:3000` to view the blog page.
 3. To access the admin panel, go to `http://localhost:3000/admin`.
-   - Default admin credentials:
-     - Username: admin
-     - Password: adminpassword
+  
 
 ## Admin Panel
 
@@ -52,10 +50,10 @@ The admin panel allows authenticated users to perform the following operations:
 - **Update:** Modify existing blog posts.
 - **Delete:** Remove blog posts from the database.
 
-To log in as an admin, use the provided credentials or create a new admin account if necessary.
+To log in as an admin, users need to sign up for an account through the application. Once signed up and authenticated, they can access the admin panel and perform CRUD operations on blog posts.
 
 ## Security
 
 - Admin login credentials are securely encrypted using bcrypt.
 - Ensure that strong passwords are used to further enhance security.
-```
+
